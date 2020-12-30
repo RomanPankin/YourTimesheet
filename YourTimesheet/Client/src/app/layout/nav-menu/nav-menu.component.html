@@ -1,0 +1,52 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom mb-3">
+    <div class="container">
+      <div class="brand">
+         <mat-icon class="-g-margin-normal-hor brand-icon">style</mat-icon>
+         <span class="brand-name">YourTimesheet<span *ngIf="(userName | async)">, {{ userName | async }}</span></span>
+      </div>
+      <button
+         class="navbar-toggler"
+         type="button"
+         data-toggle="collapse"
+         data-target=".navbar-collapse"
+         aria-label="Toggle navigation"
+         [attr.aria-expanded]="isExpanded"
+         (click)="toggle()"
+      >
+         <mat-icon>menu</mat-icon>
+      </button>
+      <div
+         class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+         [ngClass]="{ show: isExpanded }"
+      >
+      <ul class="navbar-nav flex-grow">
+         <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" [routerLink]="['/']" (click)="collapse()">Timesheet</a>
+         </li>
+         <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="canManageUserList | async">
+            <a class="nav-link" [routerLink]="['/users']" (click)="collapse()">Users</a>
+         </li>
+         <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/settings']" (click)="collapse()">Settings</a>
+         </li>
+      </ul>
+      </div>
+
+      <!-- Menu -->
+      <ng-container *ngIf="!isExpanded">
+         <button class="user-menu-button" [matMenuTriggerFor]="userMenu">
+            <mat-icon>account_circle</mat-icon>
+         </button>
+
+         <mat-menu xPosition="before" #userMenu>
+            <div class="-g-horizontal -g-center user-menu-logo">
+               <mat-icon class="user-menu-logo-icon">account_circle</mat-icon>
+            </div>
+            <div class="user-menu-name">{{ userName | async }}</div>
+            <button class="user-menu-item" mat-menu-item (click)="logout()">Logout</button>
+         </mat-menu>
+      </ng-container>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,25 @@
+@import (reference) "~src/styles/global-definitions.less";
+
+mat-form-field {
+   display: block;
+}
+
+.input-block ::ng-deep {
+   .mat-form-field {
+      height: 44px;
+   }
+
+   .mat-form-field-flex {
+      padding: 0px 0.7em;
+   }
+}
+
+.input-autofilled ::ng-deep {
+   .mat-form-field {
+      background-color: @color-autofiller !important;
+   }
+}
+
+.input[readonly=true] {
+   color: @color-gray-dark;
+}

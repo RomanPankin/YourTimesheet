@@ -1,0 +1,23 @@
+@import (reference) '~src/styles/global-definitions';
+
+.input-block {
+   position: relative;
+}
+
+.input-block ::ng-deep {
+   .mat-form-field {
+      display: block;
+   }
+
+   .mat-form-field-flex {
+      padding: 0 0.7em;
+   }
+
+   .mat-form-field-appearance-fill .mat-form-field-label {
+      margin-top: 3px;
+   }
+
+   .mat-form-field-appearance-fill .mat-select-arrow-wrapper {
+      transform: translateY(-2px);
+   }
+}

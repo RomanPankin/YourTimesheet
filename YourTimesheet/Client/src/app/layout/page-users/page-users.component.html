@@ -1,0 +1,25 @@
+<ng-container *ngIf="canManageUsers | async">
+   <h1>Users</h1>
+
+   <!-- Users -->
+   <app-section [title]="'Existing users'">
+      <ng-container *ngFor="let user of users | async">
+         <div class="item -g-horizontal -g-centered item">
+            <app-user-item class="-g-fit"
+               [value]="user"
+               [editableType]="user.editableType"
+               (itemChanged)="user.changedValues = $event">
+            </app-user-item>
+            <ng-container *ngIf="user.editableType != UserEditType.None">
+               <button mat-raised-button color="primary" class="apply-button" (click)="changeItem(user, user.changedValues)">Save</button>
+               <button mat-raised-button color="primary" (click)="cancelEditing(user)">Cancel</button>
+            </ng-container>
+            <app-dots-menu [style.visibility]="user.editableType != UserEditType.None ? 'hidden': 'visible'">
+               <button mat-menu-item (click)="editItem(user, UserEditType.Password)">Change password</button>
+               <button mat-menu-item (click)="editItem(user, UserEditType.Settings)">Change settings</button>
+               <button mat-menu-item class="-g-error-text" (click)="deleteUser(user)">Delete</button>
+            </app-dots-menu>
+         </div>
+      </ng-container>
+   </app-section>
+</ng-container>

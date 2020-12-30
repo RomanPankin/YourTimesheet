@@ -1,0 +1,52 @@
+@import (reference) "~src/styles/global-definitions.less";
+
+/* Content */
+.block {
+   border-radius: 4px;
+   background: white;
+   margin-bottom: @padding-big;
+   padding: @padding-big;
+   box-shadow: @shadow-card;
+   overflow: hidden;
+}
+
+.block-content {
+   margin: @padding-big 0;
+}
+
+.item {
+   margin-bottom: @padding-normal;
+}
+
+.item.item-editable-false:hover {
+   background: @color-highlight;
+}
+
+@media (max-width: 1000px) {
+   .line {
+      flex-grow: 1;
+      justify-content: center;
+      margin-bottom: @padding-normal;
+   }
+
+   .datepicker {
+      flex-grow: 1;
+   }
+
+   .datepicker:last-child {
+      margin-right: 0;
+   }
+}
+
+/* Empty message */
+.empty-message {
+   font-size: 54px;
+   color: fade(@color-text-subtitle, 20%);
+   text-align: center;
+   margin: @padding-big * 4 0;
+}
+
+/* Actions */
+.apply-button {
+   margin-right: @padding-normal;
+}

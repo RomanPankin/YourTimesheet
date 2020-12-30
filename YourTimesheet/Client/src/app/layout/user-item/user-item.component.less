@@ -1,0 +1,34 @@
+@import (reference) "~src/styles/global-definitions.less";
+
+.user-icon {
+   color: @color-text-subtitle;
+   width: 30px;
+   flex-shrink: 0;
+}
+
+/* Fields */
+.email, .password, .preferred-hours, .roles {
+   overflow: hidden;
+   flex-shrink: 1;
+   flex-grow: 1;
+   flex-basis: 1px;
+}
+
+@media (max-width: 780px) {
+   .email, .password, .preferred-hours, .roles {
+      flex-basis: auto;
+   }
+
+   .actions-bar {
+      flex-wrap: wrap;
+   }
+}
+
+.line {
+   margin-bottom: @padding-normal/2;
+   margin-top: @padding-normal/2;
+}
+
+.description {
+   color: @color-text-gray;
+}

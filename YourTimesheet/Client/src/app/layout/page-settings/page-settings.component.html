@@ -1,0 +1,20 @@
+<h1>Settings</h1>
+
+<app-section [title]="'Timesheet settings'">
+   <div class="-g-horizontal">
+      <app-number class="-g-fit -g-margin-normal-hor input"
+            [value]="preferredWorkingHours"
+            [placeholder]="'Preferred working hours per day'"></app-number>
+      <button mat-raised-button color="primary" (click)="updateSettings()" [disabled]="(preferredWorkingHours | async) == lastpreferredWorkingHours">Apply</button>
+   </div>
+</app-section>
+
+<app-section [title]="'User settings'">
+   <div class="-g-horizontal">
+      <app-select class="-g-fit -g-margin-normal-hor input"
+         [options]="rolesOptions"
+         [value]="role"
+         [placeholder]="'Role'"></app-select>
+      <button mat-raised-button color="primary" (click)="updateSettings()" [disabled]="(role | async) == lastRole">Apply</button>
+   </div>
+</app-section>

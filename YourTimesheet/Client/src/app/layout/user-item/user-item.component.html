@@ -1,0 +1,33 @@
+<div class="-g-horizontal -g-centered line">
+   <ng-container *ngIf="editableType != UserEditType.None">
+      <mat-icon class="user-icon">account_circle</mat-icon>
+      <div class="-g-horizontal -g-fit -g-centered actions-bar">
+         <div class="-g-margin-normal-hor -g-fit email">{{ value?.email }}</div>
+         <app-input *ngIf="editableType == UserEditType.Password"
+                  class="-g-margin-normal-hor -g-fit password"
+                  [placeholder]="'Password'"
+                  [type]="InputType.Password"
+                  [value]="password"></app-input>
+         <ng-container *ngIf="editableType == UserEditType.Settings">
+            <app-number class="-g-margin-normal-hor -g-fit preferred-hours"
+                     [placeholder]="'Preferred working hours'"
+                     [value]="preferredHours"></app-number>
+            <app-select class="-g-fit -g-margin-normal-hor roles"
+                     [value]="role"
+                     [options]="rolesOptions"
+                     [placeholder]="'Role'"></app-select>
+         </ng-container>
+      </div>
+   </ng-container>
+
+   <ng-container *ngIf="editableType == UserEditType.None">
+      <mat-icon class="user-icon">account_circle</mat-icon>
+      <div class="readonly-data">
+         <div>{{ value?.email }}</div>
+         <div class="description">
+            <span>{{ value?.settings?.role?.name }}</span>,
+            <span>{{ value?.settings?.preferredWorkingHoursPerDay }} preferred working hour{{ value?.settings?.preferredWorkingHoursPerDay > 1 ? 's' : '' }}</span>
+         </div>
+      </div>
+   </ng-container>
+</div>

@@ -1,0 +1,81 @@
+@import (reference) "~src/styles/global-definitions.less";
+
+/* Margins */
+.-g-margin-small {
+   margin-bottom: @padding-normal/2;
+}
+
+.-g-margin-normal {
+   margin-bottom: @padding-normal;
+}
+
+.-g-margin-normal-hor {
+   margin-right: @padding-normal;
+}
+
+.-g-margin-big {
+   margin-bottom: @padding-big;
+}
+
+.-g-margin-big-hor {
+   margin-right: @padding-big;
+}
+
+.-g-margin-huge {
+   margin-bottom: @padding-big*2;
+}
+
+.-g-margin-huge-hor {
+   margin-right: @padding-big*2;
+}
+
+/* Flex */
+.-g-vertical {
+   display: flex;
+   flex-direction: column;
+}
+
+.-g-horizontal {
+   display: flex;
+   flex-direction: row;
+}
+
+.-g-centered {
+   align-items: center;
+}
+
+.-g-centered-hor {
+   justify-content: center;
+}
+
+.-g-wrap {
+   flex-wrap: wrap;
+}
+
+/* Layout */
+.-g-fit {
+   flex-grow: 1;
+   flex-shrink: 1;
+}
+
+.-g-noshrink {
+   flex-shrink: 0;
+}
+
+.-g-align-right {
+   text-align: right;
+}
+
+/* Messages */
+.-g-message-type-error {
+   background-color: @color-error;
+}
+
+.-g-message-type-message {
+   background-color: @color-green;
+}
+
+/* Error text */
+.-g-error-text {
+   color: @color-error;
+}

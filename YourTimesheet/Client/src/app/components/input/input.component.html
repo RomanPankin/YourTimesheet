@@ -1,0 +1,11 @@
+<div class="input-block {{(autofilled | async) ? 'input-autofilled' : ''}}">
+   <mat-form-field>
+      <input #input
+         matInput
+         class="input"
+         autocomplete="'off'"
+         [type]="type"
+         [placeholder]="placeholder"
+         [formControl]="formControl">
+   </mat-form-field>
+</div>

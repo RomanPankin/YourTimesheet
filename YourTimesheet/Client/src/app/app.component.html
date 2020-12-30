@@ -1,0 +1,14 @@
+<ng-container *ngIf="isUserLoaded | async">
+   <!-- Authorization/registration -->
+   <ng-container *ngIf="(isUserLoggedIn | async) == false">
+      <app-user-dialog></app-user-dialog>
+   </ng-container>
+
+   <!-- The main content -->
+   <ng-container *ngIf="(isUserLoggedIn | async) == true">
+      <app-nav-menu></app-nav-menu>
+      <div class="container">
+         <router-outlet></router-outlet>
+      </div>
+   </ng-container>
+</ng-container>

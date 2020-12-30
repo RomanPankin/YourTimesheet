@@ -1,0 +1,15 @@
+@import (reference) "/src/styles/global-definitions";
+
+.mat-form-field {
+   display: block;
+}
+
+.mat-datepicker-toggle-active {
+   color: @color-blue;
+}
+
+.input-autofilled ::ng-deep {
+   .mat-form-field {
+      background-color: @color-autofiller !important;
+   }
+}

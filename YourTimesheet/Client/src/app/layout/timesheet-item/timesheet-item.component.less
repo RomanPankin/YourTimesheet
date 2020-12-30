@@ -1,0 +1,53 @@
+@import (reference) "~src/styles/global-definitions.less";
+
+/* Icon */
+.working-icon {
+   color: @color-text-subtitle;
+   width: 30px;
+   flex-shrink: 0;
+}
+
+.style-fail > .working-icon {
+   color: @color-error;
+}
+
+.style-ok > .working-icon {
+   color: @color-green;
+}
+
+/* Fields */
+.working-date, .working-hours, .working-description {
+   overflow: hidden;
+   flex-shrink: 1;
+}
+
+.working-description {
+   flex-basis: 2px;
+}
+
+.working-date-hours {
+   flex-basis: 1px;
+}
+
+@media (max-width: 780px) {
+   .working-description, .working-date-hours {
+      flex-basis: auto;
+   }
+
+   .actions-bar {
+      flex-wrap: wrap;
+   }
+
+   .working-date, .working-hours {
+      max-width: none;
+   }
+
+   .working-description {
+      margin-bottom: @padding-normal;
+   }
+}
+
+/* Static content */
+.description {
+   color: @color-text-gray;
+}

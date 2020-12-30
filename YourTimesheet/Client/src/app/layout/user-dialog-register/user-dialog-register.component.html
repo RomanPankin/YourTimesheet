@@ -1,0 +1,52 @@
+<div class="content">
+   <ng-container *ngIf="(isLoading | async) == true">
+      <!-- Background -->
+      <div class="background"></div>
+
+      <!-- Spinner -->
+      <app-spinner [spinnerType]="SpinnerType.Line"></app-spinner>
+   </ng-container>
+
+   <!-- Title -->
+   <div class="-g-margin-huge">
+      <h1>Create account</h1>
+      <app-warning-message *ngIf="(registerError | async) != null">{{ registerError | async }}</app-warning-message>
+   </div>
+
+   <!-- Inputs -->
+   <div class="input-block">
+      <div class="-g-margin-normal">
+         <app-input
+            [value]="emailValue"
+            [type]="InputType.Email"
+            [placeholder]="'Email'">
+         </app-input>
+         <app-warning-message *ngIf="(emailError | async) != null">{{ (emailError | async) }}</app-warning-message>
+      </div>
+
+      <div class="-g-margin-normal">
+         <app-input
+            [value]="passwordValue"
+            [type]="InputType.Password"
+            [placeholder]="'Password'">
+         </app-input>
+         <app-warning-message *ngIf="(passwordError | async) != null">{{ (passwordError | async) }}</app-warning-message>
+      </div>
+
+      <div class="-g-margin-normal">
+         <app-input
+            [value]="passwordConfirmationValue"
+            [type]="InputType.Password"
+            [placeholder]="'Password confirmation'">
+         </app-input>
+         <app-warning-message *ngIf="(passwordConfirmationError | async) != null">{{ (passwordConfirmationError | async) }}</app-warning-message>
+      </div>
+   </div>
+
+   <!-- Actions -->
+   <div class="-g-horizontal">
+      <button mat-button color="primary" (click)="back()">Back</button>
+      <div class="-g-fit "></div>
+      <button mat-raised-button color="primary" (click)="create()">Create</button>
+   </div>
+</div>

@@ -1,0 +1,17 @@
+<div *ngIf="spinnerType === SpinnerType.Loader" class="lds-roller spinner">
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+</div>
+<div *ngIf="spinnerType === SpinnerType.Ellipsis" class="lds-ellipsis">
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+</div>
+<div *ngIf="spinnerType === SpinnerType.Line" class="loader"></div>

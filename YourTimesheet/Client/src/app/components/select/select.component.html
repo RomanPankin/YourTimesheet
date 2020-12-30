@@ -1,0 +1,9 @@
+<div class="input-block">
+   <mat-form-field appearance="fill">
+      <mat-label>{{ placeholder }}</mat-label>
+      <mat-select [value]="(value | async)?.value"
+                  (selectionChange)="onChange($event)">
+        <mat-option *ngFor="let option of options | async" [value]="option.value" >{{ option.caption }}</mat-option>
+      </mat-select>
+   </mat-form-field>
+</div>

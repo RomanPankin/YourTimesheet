@@ -1,0 +1,110 @@
+@import (reference) "~src/styles/global-definitions.less";
+
+/* Header */
+header {
+   position: fixed;
+   left: 0px;
+   top: 0px;
+   width: 100%;
+   z-index: 1;
+}
+
+nav {
+   background: @color-blue !important;
+   white-space: nowrap;
+}
+
+.brand {
+   margin: 0px @padding-normal;
+   color: white;
+   font-size: 20px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   flex-shrink: 1;
+   flex-grow: 1;
+   width: 1px;
+}
+
+.brand-icon {
+   position: relative;
+   top: 4px;
+}
+
+.navbar-collapse {
+   flex-grow: 0;
+}
+
+.navbar-toggler {
+   margin: @padding-normal/2;
+   border-color: white;
+}
+
+.navbar-toggler > .mat-icon {
+   color: white;
+}
+
+.navbar {
+   padding: 0px;
+}
+
+.nav-item {
+   border-bottom: 3px solid transparent;
+   padding: @padding-normal/2 @padding-normal;
+}
+
+.navbar-light .navbar-nav .nav-link {
+   color: white;
+}
+
+.nav-item.link-active {
+   border-bottom-color: white;
+}
+
+@media (max-width: 576px) {
+   .nav-item {
+      border: none;
+   }
+
+   .nav-item.link-active {
+      background-color: fade(@color-blue, 50%);
+   }
+}
+
+/* User button */
+.user-menu-button {
+   background: transparent;
+   border: none;
+   color: white;
+   margin: @padding-normal;
+}
+
+.user-menu-button:active {
+   outline: none !important;
+}
+
+.user-menu-item {
+   outline: none !important;
+}
+
+.user-menu-item:focus {
+   background-color: @color-blue;
+   color: white;
+}
+
+.user-menu-logo {
+   margin: @padding-big * 2;
+}
+
+.user-menu-logo-icon {
+   font-size: 72px;
+   width: 72px;
+   height: 72px;
+   color: @color-text-subtitle;
+}
+
+.user-menu-name {
+   text-align: center;
+   margin: @padding-normal @padding-big;
+   color: @color-text-subtitle;
+}

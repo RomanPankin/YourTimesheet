@@ -1,0 +1,69 @@
+@import (reference) "~src/styles/global-definitions.less";
+
+@small-screen-margin: 120px;
+
+.page {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   overflow-x: hidden;
+}
+
+.background {
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   height: 50%;
+   width: 100%;
+   background: @color-blue;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to bottom, @color-blue, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to bottom, @color-blue, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.background-logo {
+   position: absolute;
+   top: 0px;
+   right: 0px;
+   color: white;
+   padding: 0 @padding-big;
+   font-size: 48px;
+}
+
+.slide {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+}
+
+.dialog {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   width: 450px;
+   background: white;
+   transform: translate(-50%, -50%);
+   box-shadow: @shadow-card;
+   border-radius: @border-radius;
+   overflow: hidden;
+}
+
+@media (max-width: 576px) {
+   .dialog {
+      position: relative;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      padding-top: @small-screen-margin;
+      transform: translate(0, 0);
+      box-shadow: none;
+      border: none;
+      background: transparent;
+   }
+
+   .background {
+      position: absolute;
+      height: @small-screen-margin;
+      white-space: nowrap;
+      overflow: hidden;
+   }
+}

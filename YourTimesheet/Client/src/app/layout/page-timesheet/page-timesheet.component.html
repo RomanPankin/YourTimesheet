@@ -1,0 +1,61 @@
+<h1>Timesheet</h1>
+
+<!-- Filters -->
+<app-section [title]="'Filters and actions'">
+   <div class="-g-horizontal -g-centered -g-wrap">
+      <div class="-g-horizontal line">
+         <app-datepicker class="-g-margin-normal-hor datepicker"
+            [value]="filterFrom"
+            [placeholder]="'Start date'">
+         </app-datepicker>
+         <app-datepicker class="-g-margin-normal-hor datepicker"
+            [value]="filterTo"
+            [placeholder]="'Finish date'">
+         </app-datepicker>
+      </div>
+      <div class="-g-horizontal line">
+         <button mat-raised-button color="primary" (click)="applyFilter()" *ngIf="(filterApplied | async) == false">Apply filter</button>
+         <button mat-button color="primary" (click)="applyFilter()" [disabled]="true" *ngIf="(filterApplied | async) == true">Apply filter</button>
+         <button mat-button color="primary" *ngIf="(filterFrom | async) || (filterTo | async)" (click)="clearFilter()">Clear filter</button>
+         <button mat-button color="primary" (click)="exportData()">Export as HTML</button>
+      </div>
+   </div>
+</app-section>
+
+<!-- New item -->
+<app-section [title]="'New item'">
+   <div class="item -g-horizontal" >
+      <app-timesheet-item class="-g-fit"
+                          [isEditable]="true"
+                          [value]="itemToAdd"
+                          (itemChanged)="itemToAdd = $event"></app-timesheet-item>
+      <button mat-raised-button color="primary" (click)="addItem(itemToAdd)">Add</button>
+   </div>
+</app-section>
+
+<!-- Timesheet items -->
+<ng-container *ngFor="let group of timesheetGroupped | async">
+   <app-section [title]="group.title">
+      <div *ngFor="let item of group.items" class="item -g-horizontal item-editable-{{ item.isEditable }}">
+         <app-timesheet-item class="-g-fit"
+                           [value]="item"
+                           [isEditable]="item.isEditable"
+                           [style]="item.totalHoursPerDay < (preferredWorkingHours | async) ? TimesheetItemStyle.Fail : TimesheetItemStyle.Ok"
+                           [totalHours]="item.totalHoursPerDay"
+                           (itemChanged)="item.changedValues = $event"></app-timesheet-item>
+         <ng-container *ngIf="item.isEditable">
+            <button mat-raised-button color="primary" class="apply-button" (click)="changeItem(item, item.changedValues)">Done</button>
+         </ng-container>
+
+         <app-dots-menu [style.visibility]="item.isEditable ? 'hidden': 'visible'">
+            <button mat-menu-item (click)="editItem(item)">Change</button>
+            <button mat-menu-item class="-g-error-text" (click)="deleteItem(item)">Delete</button>
+         </app-dots-menu>
+      </div>
+   </app-section>
+</ng-container>
+
+<!-- Empty -->
+<ng-container *ngIf="isLoaded == true && (timesheetGroupped | async)?.length == 0">
+   <div class="empty-message">No data to display</div>
+</ng-container>

@@ -1,0 +1,24 @@
+<div class="-g-horizontal -g-centered style-{{ style }}">
+   <ng-container *ngIf="isEditable">
+      <mat-icon class="-g-margin-normal-hor working-icon">access_time</mat-icon>
+      <div class="-g-horizontal -g-fit actions-bar">
+         <app-input class="-g-margin-normal-hor -g-fit working-description" [placeholder]="'Work description'" [value]="description"></app-input>
+         <div class="-g-horizontal -g-fit working-date-hours">
+            <app-datepicker class="-g-margin-normal-hor -g-fit working-date" [placeholder]="'Date'" [value]="date"></app-datepicker>
+            <app-input class="-g-margin-normal-hor -g-fit working-hours" [placeholder]="'Hours'" [value]="duration"></app-input>
+         </div>
+      </div>
+   </ng-container>
+
+   <ng-container *ngIf="!isEditable">
+      <mat-icon class="-g-margin-normal-hor working-icon">access_time</mat-icon>
+      <div>
+         <div>{{ value?.description }}</div>
+         <div class="description">
+            <span>{{ formatDate(value?.date) }}</span>,
+            <span>{{ value?.durationInHours }}{{ totalHours && totalHours !== value?.durationInHours ? ' of ' + totalHours : '' }} hours</span>
+            <span *ngIf="(canManageUserTimesheet | async) && value?.user">, {{ value?.user }}</span>
+         </div>
+      </div>
+   </ng-container>
+</div>

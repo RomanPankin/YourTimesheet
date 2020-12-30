@@ -1,0 +1,40 @@
+<div class="content">
+   <ng-container *ngIf="(isLoading | async) == true">
+      <!-- Background -->
+      <div class="background"></div>
+
+      <!-- Spinner -->
+      <app-spinner [spinnerType]="SpinnerType.Line"></app-spinner>
+   </ng-container>
+
+   <!-- Title -->
+   <h1 class="-g-margin-huge">Sign in</h1>
+
+   <!-- Inputs -->
+   <div class="input-block">
+      <div class="-g-margin-normal">
+         <app-input
+            [value]="emailValue"
+            [type]="InputType.Email"
+            [placeholder]="'Email'">
+         </app-input>
+         <app-warning-message *ngIf="(emailError | async) != null">{{ (emailError | async) }}</app-warning-message>
+      </div>
+
+      <div class="-g-margin-normal">
+         <app-input
+            [value]="passwordValue"
+            [type]="InputType.Password"
+            [placeholder]="'Password'">
+         </app-input>
+         <app-warning-message *ngIf="(passwordError | async) != null">{{ (passwordError | async) }}</app-warning-message>
+      </div>
+   </div>
+
+   <!-- Actions -->
+   <div class="-g-horizontal">
+      <button mat-button color="primary" (click)="createAccount()">Create account</button>
+      <div class="-g-fit "></div>
+      <button mat-raised-button color="primary" (click)="signIn()">Sign in</button>
+   </div>
+</div>

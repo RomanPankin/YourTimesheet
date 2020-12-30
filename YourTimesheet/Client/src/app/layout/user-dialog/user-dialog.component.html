@@ -1,0 +1,22 @@
+<div class="page">
+   <div class="background">
+      <div class="background-logo">Your Timesheet</div>
+   </div>
+
+   <div class="slide"
+      [@dialogSignInState]="isFirstAppearance ? '' : 'visible'"
+      *ngIf="(dialogState | async) == UserDialogState.SignIn">
+      <div class="dialog">
+         <app-user-dialog-auth [dialogState]="dialogState"></app-user-dialog-auth>
+      </div>
+   </div>
+
+   <div class="slide"
+      @dialogRegisterState
+      *ngIf="(dialogState | async) == UserDialogState.Register">
+      <div class="dialog">
+         <app-user-dialog-register [dialogState]="dialogState">
+         </app-user-dialog-register>
+      </div>
+   </div>
+</div>
